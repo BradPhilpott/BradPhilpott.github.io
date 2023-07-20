@@ -1,61 +1,34 @@
+let slideIndex = 0;
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+
 $(document).ready(function () {
-  $("#slides").superslides({
-    animation: "fade",
-    play: 5000,
-    pagination: false,
-  });
 
-  var typed = new Typed(".typed", {
-    strings: ["PHP / Laravel", "React.js", "MySQL"],
-    typeSpeed: 60,
-    startDelay: 900,
-    showCursor: false,
-    loop: true,
-    backDelay: 900,
-    backSpeed: 40,
-  });
-
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    items: 4,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      480: {
-        items: 2,
-      },
-      768: {
-        items: 3,
-      },
-      938: {
-        items: 4,
-      }
-    }
-  });
-
-  var skillsTopOffset = $(".skillsSection").offset().top;
-  var statsTopOffset = $(".statsSection").offset().top;
   var countUpFinished = false;
 
-  $(window).scroll(function () {
-    if (window.pageYOffset > skillsTopOffset - $(window).height() + 200) {
-      $(".chart").easyPieChart({
-        easing: "easeInOut",
-        barColor: "#fff",
-        trackColor: false,
-        scaleColor: false,
-        lineWidth: 4,
-        size: 152,
-        onStep: function (from, to, percent) {
-          $(this.el).find(".percent").text(Math.round(percent));
-        },
-      });
-    }
-    if (
-      !countUpFinished &&
-      window.pageYOffset > statsTopOffset - $(window).height() + 200
-    ) {
+    $(".chart").easyPieChart({
+      easing: "easeInOut",
+      barColor: "#fff",
+      trackColor: false,
+      scaleColor: false,
+      lineWidth: 4,
+      size: 152,
+      onStep: function (from, to, percent) {
+        $(this.el).find(".percent").text(Math.round(percent));
+      },
+    });
+
+    if ( !countUpFinished ) {
       $(".counter").each(function () {
         var element = $(this);
         var endVal = parseInt(element.text());
@@ -63,7 +36,9 @@ $(document).ready(function () {
       });
       countUpFinished = true;
     }
-  });
+
+    
+    showSlides();
 
   $("[data-fancybox]").fancybox();
   $("#filters a").click(function () {

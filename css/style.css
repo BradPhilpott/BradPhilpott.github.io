@@ -43,9 +43,20 @@ body {
 }
 
 .section {
-  background-color: rgb(27, 27, 27);
   color: rgb(151, 150, 150);
   padding: 100px 0;
+}
+
+div.app > div:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+div.app > div:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.section a {
+  color: rgb(151, 150, 150);
 }
 
 .aboutImage {
@@ -57,16 +68,19 @@ body {
   margin-right: 5px;
 }
 
-.skillsSection {
-  background: linear-gradient(
-    90deg,
-    #28313B,
-    #485461
-  );
-  color: #fff;
+.skillsSection .row {
+  margin: auto;
 }
 
-.contactSection {
+.skillsSection {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.skillsSection h2 {
+  margin-bottom: 1.5rem;
+}
+
+.projectSection {
   background: linear-gradient(
     90deg,
     #28313B,
@@ -78,6 +92,10 @@ body {
 .skill {
   text-align: center;
   margin-left: 10px;
+}
+
+.list {
+  list-style-type: none;
 }
 
 .chart {
@@ -116,6 +134,7 @@ body {
   text-align: center;
   border: 2px solid #444;
   border-top: none;
+  min-height: 240px;
 }
 
 .squareInnerContainer:before,
@@ -341,15 +360,16 @@ body {
 }
 
 #navigation {
-  background: linear-gradient(
-    90deg,
-    #28313B,
-    #485461
-  );
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px 10px;
   z-index: 100;
   width: 100%;
+  position: fixed;
 }
+
+/* .navbar :hover {
+  background-color: rgba(0, 0, 0, 1);
+} */
 
 #navigation li {
   padding: 0 10px;
@@ -378,4 +398,13 @@ body {
 .fixedNav #navigation {
   position: fixed;
   top: 0;
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  -ms-flex-positive: 1;
+  flex-grow: 0;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: auto;
 }
